@@ -10,7 +10,21 @@ class Subscribers
 	 */
 	static public function cleanPhone($number)
 	{
-		return preg_replace( '/[^0-9]/', '', $number);
+		$number = trim($number);
+
+		if (strpos($number, '+') === 0) {
+			$has_country = TRUE;
+		} else {
+			$has_country = FALSE;
+		}
+
+		$number = preg_replace( '/[^0-9]/', '', $number);
+
+		if (strlen($number) == 10 && !$has_country) {
+			return '+1' . $number;
+		} else {
+			return '+' . $number;
+		}
 	}
 
 
@@ -28,6 +42,7 @@ class Subscribers
 	 */
 	public function add($campaign, $mobile)
 	{
+		$mobile     = static::cleanPhone($mobile);
 		$collection = $this->campaigns->getCollection($campaign);
 		$result     = $collection->findOne([
 			'mobile' => $mobile

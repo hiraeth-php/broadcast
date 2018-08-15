@@ -29,7 +29,8 @@ cache_file = writable/cache/routing.cache
 
 	routes = {
 		"/": {"target": "ViewHome"},
-		"/incoming": {"target": "ReceiveText"}
+		"/incoming": {"target": "ReceiveText"},
+		"/subscribe/{{ keyword }}": {"target": "Subscribe"}
 	}
 
 [application]
