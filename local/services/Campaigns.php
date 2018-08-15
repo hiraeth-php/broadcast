@@ -46,7 +46,7 @@ class Campaigns
 	 */
 	public function getCollection($campaign = NULL)
 	{
-		if ($campaign) {
+		if (isset($campaign->name)) {
 			return $this->db->selectCollection('campaign_' . $campaign->name);
 		} else {
 			return $this->db->selectCollection('campaigns');

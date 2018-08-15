@@ -6,5 +6,6 @@
 commands = [
 	"CreateCampaignCommand",
 	"AddKeywordCommand",
-	"AddSubscriptionCommand"
+	"AddSubscriptionCommand",
+	"SendMessageCommand"
 ]
